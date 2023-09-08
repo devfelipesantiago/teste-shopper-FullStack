@@ -1,11 +1,14 @@
-const app = require('./app');
-const connection = require('./db/connection');
+const express = require('express');
+const bodyParser = require('body-parser');
+const routes = require('./routes');
 
-const PORT = 3001;
+const app = express();
 
-app.listen(PORT, async () => {
-  console.log(`API está sendo executada na porta ${PORT}`);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-  const [result] = await connection.execute('SELECT 1');
-  if (result) console.log('MySQL connection OK');
-});
+app.use('/', routes);
+
+const port = process.env.PORT || 3001;
+
+app.listen(port, async () => console.log(`Server listening on port ${port}`));
