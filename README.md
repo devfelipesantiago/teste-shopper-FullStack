@@ -1,4 +1,4 @@
-# Testa fullstack Nodejs/Resact Shopper
+# Testa fullstack Nodejs/React Shopper
 
 # Cenário
 
